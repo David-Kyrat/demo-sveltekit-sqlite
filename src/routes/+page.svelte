@@ -1,8 +1,11 @@
 <script>
   let btn_class =
     "relative inline-flex items-center justify-center p-0.5 mb-2 mr-2 overflow-hidden text-sm font-medium hover:bg-gray-900 text-gray-900 rounded-lg group bg-gradient-to-br from-purple-600 to-blue-500  white:text-dark focus:ring-2 focus:outline-none focus:ring-blue-200 white:focus:ring-blue-800";
-  let btnspan_class = (padding) =>
-    `relative px-${padding} py-2.5 transition-all ease-in duration-75 bg-white white:bg-gray-900 rounded-md group-hover:text-violet-600`;
+  function btnspan_class(padding) {
+    return `relative ${padding} py-2.5 transition-all ease-in duration-75 bg-white white:bg-gray-900 rounded-md group-hover:text-violet-600`;
+  }
+
+  // let btnspan_class2 = "relative px-9 py-2.5  transition-all ease-in duration-75 bg-white white:bg-gray-900 rounded-md group-hover:text-violet-600";
 
   import SuperHeroes from "$lib/components/SuperHeroes.svelte";
 
@@ -22,7 +25,9 @@
 
   let input = "";
 
-  function handleSubmit() { value = input; }
+  function handleSubmit() {
+    value = input;
+  }
 </script>
 
 <svelte:head>
@@ -47,13 +52,13 @@
   />
 </label>
 <button class={btn_class} on:click={handleSubmit} style="margin-left: 2em;">
-  <span class={btnspan_class(8)}> Submit </span>
+  <span class={btnspan_class("px-8")}> Submit </span>
 </button>
 
 <br />
 
 <button class={btn_class} on:click={(_) => (items = [])}>
-  <span class={btnspan_class(5)}> Clear</span>
+  <span class={btnspan_class("px-5")}> Clear</span>
 </button>
 
 <!-- <div style="padding: 20px 0px">
