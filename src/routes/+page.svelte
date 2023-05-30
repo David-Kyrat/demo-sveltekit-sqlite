@@ -2,7 +2,7 @@
   let btn_class =
     "relative inline-flex items-center justify-center p-0.5 mb-2 mr-2 overflow-hidden text-sm font-medium hover:bg-gray-900 text-gray-900 rounded-lg group bg-gradient-to-br from-purple-600 to-blue-500  white:text-dark focus:ring-2 focus:outline-none focus:ring-blue-200 white:focus:ring-blue-800";
   let btnspan_class = (padding) =>
-    `relative px-${padding} py-2.5 transition-all ease-in duration-75 bg-white white:bg-gray-900 rounded-md group-hover:text-violet-600`;
+    `relative px-18 py-2.5 transition-all ease-in duration-75 bg-white white:bg-gray-900 rounded-md group-hover:text-violet-600`;
 
   import SuperHeroes from "$lib/components/SuperHeroes.svelte";
 
@@ -47,7 +47,7 @@
   />
 </label>
 <button class={btn_class} on:click={handleSubmit} style="margin-left: 2em;">
-  <span class={btnspan_class(8)}> Submit </span>
+  <span class={btnspan_class(18)}> Submit </span>
 </button>
 
 <br />
