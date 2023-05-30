@@ -1,5 +1,7 @@
 * Demo: a SvelteKit project that reads from a local SQLite database
 
-This repo is public only to be allow watching / pulling change from the original one.
+*Disclaimer*
 
-It is not supposed to be working, much less finished.
+- *This repo is public only to be allow watching / pulling change from the original one.*
+
+- *It is not supposed to be working, much less finished.*
