@@ -8,6 +8,7 @@
   // let btnspan_class2 = "relative px-9 py-2.5  transition-all ease-in duration-75 bg-white white:bg-gray-900 rounded-md group-hover:text-violet-600";
 
   import SuperHeroes from "$lib/components/SuperHeroes.svelte";
+  import FancyBtn from "../lib/components/FancyBtn.svelte";
 
   const description = "Here's my description!";
   async function update(value) {
@@ -51,15 +52,12 @@
     style="margin: 2em 1em;"
   />
 </label>
-<button class={btn_class} on:click={handleSubmit} style="margin-left: 2em;">
-  <span class={btnspan_class("px-8")}> Submit </span>
-</button>
+
+<FancyBtn text="Submit" on_click={handleSubmit} padding_x="px-8" style="margin-left: 2em;"/>
 
 <br />
 
-<button class={btn_class} on:click={(_) => (items = [])}>
-  <span class={btnspan_class("px-5")}> Clear</span>
-</button>
+<FancyBtn text="clear" on_click={_ => items = []} padding_x="px-5" />
 
 <!-- <div style="padding: 20px 0px">
   <p>Entered value: "{input}"</p>
