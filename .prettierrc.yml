@@ -2,3 +2,4 @@ overrides:
   - files: "*.svelte"
     options:
       parser: "svelte"
+      tabWidth: 2

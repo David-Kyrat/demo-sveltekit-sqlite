@@ -1,16 +1,28 @@
 <script>
+  let btn_class =
+    "relative inline-flex items-center justify-center p-0.5 mb-2 mr-2 overflow-hidden text-sm font-medium hover:bg-gray-900 text-gray-900 rounded-lg group bg-gradient-to-br from-purple-600 to-blue-500  white:text-dark focus:ring-2 focus:outline-none focus:ring-blue-200 white:focus:ring-blue-800";
+  let btnspan_class = (padding) =>
+    `relative px-${padding} py-2.5 transition-all ease-in duration-75 bg-white white:bg-gray-900 rounded-md group-hover:text-violet-600`;
+
   import SuperHeroes from "$lib/components/SuperHeroes.svelte";
+
   const description = "Here's my description!";
   async function update(value) {
-    if (value.trim().length > 0) {
-      items = await fetch(`/heroes?q=${value.trim()}`).then((v) => v.json());
-    } else {
+    if (value && value.length > 0) {
       items = [];
+      input = "waiting...";
+      items = await fetch(`/heroes?q=${value.trim()}`).then((v) => v.json());
+      input = "";
     }
+    //http://localhost:5173/heroes?q=
   }
   let items = [];
   let value;
   $: update(value);
+
+  let input = "";
+
+  function handleSubmit() { value = input; }
 </script>
 
 <svelte:head>
@@ -18,17 +30,44 @@
   <title>Here's a title!</title>
 </svelte:head>
 
-<main class="w-[95%] max-w-2xl mx-auto mt-48">
-  <h1 class="text-3xl font-bold">
-    Example reading data from a local SQLite database
-  </h1>
-  <p>Search for superheroes below</p>
+<h1 class="text-4xl font-bold">
+  Example reading data from a local SQLite database
+</h1>
+<hr />
+<br />
+<label>
+  Enter something here:
   <input
     class="p-2"
     type="search"
-    autocomplete="off"
-    placeholder="Search"
-    bind:value
+    autocomplete="on"
+    placeholder="Search in database"
+    bind:value={input}
+    style="margin: 2em 1em;"
   />
-  <SuperHeroes {items} />
-</main>
+</label>
+<button class={btn_class} on:click={handleSubmit} style="margin-left: 2em;">
+  <span class={btnspan_class(8)}> Submit </span>
+</button>
+
+<br />
+
+<button class={btn_class} on:click={(_) => (items = [])}>
+  <span class={btnspan_class(5)}> Clear</span>
+</button>
+
+<!-- <div style="padding: 20px 0px">
+  <p>Entered value: "{input}"</p>
+</div> -->
+
+<h2 class="text-2xl font-bold" style=" padding-top: 40px">Results</h2>
+<hr />
+
+<SuperHeroes {items} />
+
+<style>
+  hr {
+    margin-top: 1em;
+    padding-bottom: 1.5em;
+  }
+</style>
